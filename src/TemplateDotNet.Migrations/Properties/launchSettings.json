@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "TemplateDotNet.Migrations": {
+      "commandName": "Project",
+      "environmentVariables": {
+        
+      }
+    }
+  }
+}
