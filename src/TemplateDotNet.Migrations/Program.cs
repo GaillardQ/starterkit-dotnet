@@ -30,8 +30,7 @@ using var host = Host.CreateDefaultBuilder(args)
         //  at design time, dotnet ef is only able to find connection string from appSetting.json
         //  at runtime, to perform migration, it is able to fing the connection string from launchSettings.json
 
-        var credentials = Environment.GetEnvironmentVariable("TEMPLATE_DB");
-
+		var credentials = context.Configuration.GetConnectionString("template_db");
         services
             .AddDbContext<ApiDbContext>(opt => opt
                 .UseNpgsql(credentials));

@@ -16,7 +16,7 @@
 			},
 			"env": {
 				"ASPNETCORE_ENVIRONMENT": "Development",
-				"TEMPLATE_DB": "Host=localhost;Port=5432;Database=template-dotnet;Username=postgres;Password=toto"
+				"TEMPLATE_DB": "Host=localhost;Port=5432;Database=starterkit-dotnet;Username=postgres;Password="
 			},
 			"sourceFileMap": {
 				"/Views": "${workspaceFolder}/Views"

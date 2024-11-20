@@ -3,7 +3,7 @@ WORKDIR /app
 EXPOSE 5001
 
 ENV ASPNETCORE_URLS=http://+:5001
-ENV TEMPLATE_DB="Host=localhost;Port=5432;Database=template-dotnet;Username=postgres;Password=toto"
+ENV TEMPLATE_DB="Host=localhost;Port=5432;Database=starterkit-dotnet;Username=postgres;Password=Fuck666"
 
 USER app
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build

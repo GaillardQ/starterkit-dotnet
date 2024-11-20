@@ -17,5 +17,5 @@ TODO : liste des sous-projets et présentation de chacuns
 
 # Aide
 ## Migrations
-- Créer fichier : ```dotnet ef migrations add AddLineTable```
+- Créer fichier : ```dotnet ef migrations add MigrationName```
 - Update du schéma : ```dotnet ef database update```

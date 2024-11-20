@@ -38,7 +38,7 @@ public partial class ApiDbContext : DbContext
                 .HasColumnName("lastname")
                 .HasComment("Nom de l'utilisateur");
             entity.Property(e => e.Birthdate)
-                .HasColumnName("lastname")
+                .HasColumnName("birthdate")
                 .HasComment("Date de naissance de l'utilisateur");
             entity.Property(e => e.CreatedAt)
                 .HasColumnName("created_at")
@@ -52,9 +52,11 @@ public partial class ApiDbContext : DbContext
         #endregion
     }
 
+/*
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var credentials = Environment.GetEnvironmentVariable("TEMPLATE_DB");
+		var credentials = Environment.GetEnvironmentVariable("TEMPLATE_DB");
         optionsBuilder.UseNpgsql(credentials);
     }
+	*/
 }
