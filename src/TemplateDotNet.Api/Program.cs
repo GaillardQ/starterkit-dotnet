@@ -7,8 +7,8 @@ using System.Security.Claims;
 using System.Text.Json.Serialization;
 using TemplateDotNet.Middlewares;
 using TemplateDotNet.Migrations;
-using TemplateDotNet.Repositories;
-using TemplateDotNet.Services;
+using TemplateDotNet.Repositories.Test;
+using TemplateDotNet.Services.Test;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,10 +66,10 @@ var credentials = Environment.GetEnvironmentVariable("TEMPLATE_DB");
 builder.Services.AddDbContext<ApiDbContext>(options => options.UseNpgsql(credentials));
 
 // Repositories
-builder.Services.AddTransient<ITestRepository, TestRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 
 // Services
-builder.Services.AddScoped<ITestService, TestService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 // Authentification
 
