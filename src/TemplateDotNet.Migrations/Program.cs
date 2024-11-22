@@ -29,9 +29,11 @@ using var host = Host.CreateDefaultBuilder(args)
         //  adding Read db context enable DbContextOptions<TDbContext> options
         //  at design time, dotnet ef is only able to find connection string from appSetting.json
         //  at runtime, to perform migration, it is able to fing the connection string from launchSettings.json
+
+		var credentials = context.Configuration.GetConnectionString("template_db");
         services
             .AddDbContext<ApiDbContext>(opt => opt
-                .UseNpgsql(context.Configuration.GetConnectionString("balance-chevrette-db")));
+                .UseNpgsql(credentials));
     })
     .Build();
 

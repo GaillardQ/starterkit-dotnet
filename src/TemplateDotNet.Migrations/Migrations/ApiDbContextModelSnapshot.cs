@@ -22,100 +22,47 @@ namespace TemplateDotNet.Migrations.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("TemplateDotNet.Domains.Line", b =>
+            modelBuilder.Entity("TemplateDotNet.Domains.Test.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid")
                         .HasColumnName("id")
-                        .HasComment("Identifiant de la ligne");
+                        .HasComment("Identifiant de l'utilisateur");
+
+                    b.Property<DateTime>("Birthdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("birthdate")
+                        .HasComment("Date de naissance de l'utilisateur");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at")
                         .HasDefaultValueSql("now()")
-                        .HasComment("Date de création de la ligne");
+                        .HasComment("Date de création de l'utilisateur");
 
-                    b.Property<string>("ErrorMessage")
+                    b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("error_message")
-                        .HasComment("Message d'erreur");
+                        .HasColumnName("firstname")
+                        .HasComment("Prénom de l'utilisateur");
 
-                    b.Property<bool?>("IsError")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasColumnName("is_error")
-                        .HasDefaultValueSql("false")
-                        .HasComment("Si c'est une erreur");
-
-                    b.Property<int>("Number")
-                        .HasColumnType("integer")
-                        .HasColumnName("number")
-                        .HasComment("Numéro de la ligne");
-
-                    b.Property<Guid>("TestId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("lastname")
+                        .HasComment("Nom de l'utilisateur");
 
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at")
                         .HasDefaultValueSql("now()")
-                        .HasComment("Date d'update de la ligne");
+                        .HasComment("Date d'update de l'utilisateur");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TestId");
-
-                    b.ToTable("line", "public");
-                });
-
-            modelBuilder.Entity("TemplateDotNet.Domains.Test", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id")
-                        .HasComment("Identifiant du test");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_at")
-                        .HasDefaultValueSql("now()")
-                        .HasComment("Date de création du test");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("name")
-                        .HasComment("Nom du test");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("updated_at")
-                        .HasDefaultValueSql("now()")
-                        .HasComment("Date d'update du test");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("test", "public");
-                });
-
-            modelBuilder.Entity("TemplateDotNet.Domains.Line", b =>
-                {
-                    b.HasOne("TemplateDotNet.Domains.Test", "Test")
-                        .WithMany("Lines")
-                        .HasForeignKey("TestId")
-                        .IsRequired()
-                        .HasConstraintName("line_fk_test");
-
-                    b.Navigation("Test");
-                });
-
-            modelBuilder.Entity("TemplateDotNet.Domains.Test", b =>
-                {
-                    b.Navigation("Lines");
+                    b.ToTable("user", "public");
                 });
 #pragma warning restore 612, 618
         }

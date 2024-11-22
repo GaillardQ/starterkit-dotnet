@@ -12,49 +12,60 @@ using TemplateDotNet.Migrations;
 namespace TemplateDotNet.Migrations.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20240918150635_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241120213217_InitDbSchema")]
+    partial class InitDbSchema
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("TemplateDotNet.Domains.Test", b =>
+            modelBuilder.Entity("TemplateDotNet.Domains.Test.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid")
                         .HasColumnName("id")
-                        .HasComment("Identifiant du test");
+                        .HasComment("Identifiant de l'utilisateur");
+
+                    b.Property<DateTime>("Birthdate")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("birthdate")
+                        .HasComment("Date de naissance de l'utilisateur");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at")
                         .HasDefaultValueSql("now()")
-                        .HasComment("Date de création du test");
+                        .HasComment("Date de création de l'utilisateur");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("name")
-                        .HasComment("Nom du test");
+                        .HasColumnName("firstname")
+                        .HasComment("Prénom de l'utilisateur");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("lastname")
+                        .HasComment("Nom de l'utilisateur");
 
                     b.Property<DateTime>("UpdatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at")
                         .HasDefaultValueSql("now()")
-                        .HasComment("Date d'update du test");
+                        .HasComment("Date d'update de l'utilisateur");
 
                     b.HasKey("Id");
 
-                    b.ToTable("test", "public");
+                    b.ToTable("user", "public");
                 });
 #pragma warning restore 612, 618
         }
