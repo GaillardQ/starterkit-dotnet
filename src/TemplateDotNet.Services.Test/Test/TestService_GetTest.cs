@@ -8,6 +8,6 @@ public class AnimalService_GetTest
     public void GetTest()
     {
         var test = true;
-        Assert.True(test, "La valeur doit être 'vrai'.");
+        Assert.True(test, "La valeur doit ï¿½tre 'vrai'.");
     }
 }
